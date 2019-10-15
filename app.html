@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$">
+                    <script type="text/template">
+                        ### 思考一个问题
+
+                        --
+
+                        我们如何在代码库基于某一框架的情况下，能以尽可能小的代价, 在未来将组件库迁移到其他`框架/库` 下?
+
+                        --
+
+                        总不能基于新的技术全部重写一遍吧，这样太浪费生命了
+
+                        ---
+
+                        我们开发项目，交互/行为 逻辑基本上是可确定的，最多也就是 UI 上的一些调整。
+
+                        --
+
+                        在 MVVM 架构视角下，越是重型的应用其复杂度越是集中在 M(Model) 跟 VM(ViewModel) 这两层，尤其是 Model 层，理论上应该是能脱离上层视图独立运行独立发布独立测试的存在，而相应的不同视图框架只是使用了不同绑定语法的动态模板引擎而已，所以只要我们将视图层做的很薄，我们迁移的成本自然会降到一个可接受的范畴。
+                       
+                        ---
+                       
+                        要做到 Model 甚至 ViewModel 独立可复用，我们需要的是一种可以帮助我们描述各数据模型间依赖关系图且框架`中立`的通用状态管理方案
+
+                        --
+                       
+                        首先我们选择的ui框架：vue。因为做小程序，多端实现，我们选择了uni-app，所以我们就要去调研和选择跟vue搭配的状态管理方案
+                       
+                        --
+
+                        在架构上，我们只需要使用对应的 connector，就能基于同一数据层，在不同框架下自如的切换
+                    </script>
+                </section>
+				<section>Slide 1</section>
+				<section>Slide 2</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
